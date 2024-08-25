@@ -1,0 +1,49 @@
+public class ArrayStack<E> implements Stack<E> {
+	private E[] data;
+	private int top = -1;
+	private static final int DEFAULT_CAPACITY = 10;
+	
+	public ArrayStack(){  // constructs stack with default capacity
+		this(DEFAULT_CAPACITY);
+		} 
+	public ArrayStack(int capacity) {
+			data = (E[ ]) new Object[capacity]; 
+		}
+	
+	@Override
+	public boolean isEmpty() {
+		if(top==-1)
+			return true;
+		return false;
+		//or you can write
+		//return (top==-1);
+	}
+
+	@Override
+	public E peek() {
+		if(isEmpty()) return null;
+		E result = data[top];
+		return result;
+	}
+
+	@Override
+	public E pop() {
+		if(isEmpty()) return null;
+		E result = data[top];
+		data[top--] = null;
+		return result;
+	}
+
+	@Override
+	public void push(E item) {
+		if (size( )== data.length) throw new IllegalStateException("Stack is full");
+		data[++top]=item;
+	}
+
+	@Override
+	public int size() {
+		return top+1;
+	}
+	
+
+}
